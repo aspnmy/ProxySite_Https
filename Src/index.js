@@ -25,23 +25,24 @@
     });
     console.log(`New request URL: ${url.toString()}`);
 
-    // 使用缓存
-    const cacheKey = new Request(url.toString(), { method: 'GET' });
-    const cachedResponse = await caches.match(cacheKey);
-    if (cachedResponse) {
-      console.log('Returning cached response');
-      return cachedResponse;
-    }
+  // 使用缓存：根据需要，动态页面不需要开缓存
+  //   const cacheKey = new Request(url.toString(), { method: 'GET' });
+  //   const cachedResponse = await caches.match(cacheKey);
+  //   if (cachedResponse) {
+  //     console.log('Returning cached response');
+  //     return cachedResponse;
+  //   }
 
-    try {
-      const response = await fetch(newRequest);
-      const clonedResponse = response.clone();
-      caches.put(cacheKey, clonedResponse);
-      return response;
-    } catch (error) {
-      console.error(`Error fetching new request: ${error}`);
-      throw error;
-    }
-  }
-})();
+  //   try {
+  //     const response = await fetch(newRequest);
+  //     const clonedResponse = response.clone();
+  //     caches.put(cacheKey, clonedResponse);
+  //     return response;
+  //   } catch (error) {
+  //     console.error(`Error fetching new request: ${error}`);
+  //     throw error;
+  //   }
+   }
+}
+)();
 //# sourceMappingURL=index.js.map
